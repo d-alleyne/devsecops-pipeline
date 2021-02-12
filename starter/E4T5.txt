@@ -1,0 +1,13 @@
+Additonal Hardening Measures.
+
+* Create an AMI that has non-essential services, like remote access disabled.
+
+* Disable Remote access to all instances, but attach an Instance Profile
+that allows the AWS Systems Manager to connect.
+More information can be found here: https://docs.aws.amazon.com/systems-manager/latest/userguide/quick-setup-host-management.html
+
+* Use Network Access Control Lists to isolate Subnets that should never communicate
+with each other.
+
+* Add a Bucket Policy that requires MFA to the Secret Recipes Bucket. More information 
+can be found here: https://docs.aws.amazon.com/AmazonS3/latest/userguide/example-bucket-policies.html

@@ -1,13 +1,29 @@
 # Identify tools that will allow you to do the following:
 
 ## Scan infrastructure as code templates
-
+Checkov (https://bridgecrew.io/blog/announcing-cloudformation-support-in-checkov/)
+can be used to scan the Cloudformation/Terraform files for vulnerabilities. 
+It is open source, and free.
 ### Example vulnerability
+A security group that allowed Access from everywhere, rather than from
+a specific/known source of addresses, and to specific ports.
+
 
 ##Scan AMI’s or containers for OS vulnerabilities
+Amazon's Elastic Container Registry (ECR) can perform static analysis of 
+container images and find any Common Vulnerabilities and Exposures (CVEs)
+prior to deployment.
 
 ### Example vulnerability
+A popular web application software that is used on your application 
+(e.g. WordPress) is using library/plugin with a known vulnerability.
 
 ##Scan an AWS environment for cloud configuration vulnerabilities
+AWS Inspector can be used to find vulnerabilities in deployed applications.
+It can scan hosts for vulnerable software with an Inspector Agent
+being installed on the instance.
 
 ### Example vulnerability
+
+A WordPress plugin used by your EC2 Instance has become vulnerable to 
+a privileged escalation attack since post-deployment. 

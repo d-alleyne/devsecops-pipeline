@@ -1,8 +1,18 @@
 
 # What additional architectural change can be made to reduce the internet facing attack surface of the web application instance.
+Instead of allowing access to port 5000 from any source within the ALB's subnet, we can reduce the attack surface by only allowing
+access to port 5000 from instances with the ALB's security group. This will mitigate any attacks from instances within the ALB's subnet.
+Also, a Web Application Firewall can be placed in front of the ALB (as suggested in Exercise 3) to prevent common attacks.
 
 # Assuming the IAM permissions for the S3 bucket are still insecure, would creating VPC private endpoints for S3 prevent the unauthorized access to the secrets bucket.
+According to the VPC Endpoint documentation https://docs.aws.amazon.com/vpc/latest/userguide/vpc-endpoints-access.html, 
+an S3 bucket policy can be used to restrict access to the bucket from from a specific endpoint, as well as specific users/principals.
+In our current architecture, yes, it can be used to prevent unauthorized access to the secret bucket from instances within
+the public subnets.
 
 # Will applying default encryption setting to the s3 buckets encrypt the data that already exists?
+Enabling S3 bucket encryption encrypts new content. Existing content remains unencrypted.
 
 # What would happen if the original cloud formation templates are applied to this environment.
+Applying the original cloud formation templates to this environment would revert all of the 
+measures that we used to harden the environment from security threats.

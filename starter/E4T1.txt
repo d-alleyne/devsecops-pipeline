@@ -1,5 +1,10 @@
-
-
 # Identify 2-3 changes that can be made to our environment to prevent an ssh brute force attack from the internet.
+The following changes can be made to the environment to prevent SSH brute force attacks:
+1) The security group of Web Server Instance should be limited to accept traffic from the
+Application Load Balancer
+2) A Network Address Control List rule can used to deny SSH traffic between subnets
+
 
 # Neither instance should have had access to the secret recipes bucket, in the even that instance API credentials were compromised how could we have prevented access to sensitive data.
+The Instance Role can be modified so that it only allows Read Access to the free recipes
+bucket, and an explicit deny to the secret recipes bucket.

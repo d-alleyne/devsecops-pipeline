@@ -1,0 +1,10 @@
+Two poor security practices of the architecture:
+
+1) Traffic from the Attack Simulation Instance is allowed to connect to the Web Service Instance. 
+The Web Service Instance should be configured to only accept traffic from the Application Load Balancer.
+Currently, the web service allows traffic from anywhere on port 22 and 5000. 
+
+2) The Instance Role is too permissive. It allows all actions to S3 buckets. 
+This means that if an EC2 instance is compromised, the contents of the S3 buckets are accessible.
+The EC2 instance in the Untrusted subnet should have a different Instance Role that the 
+Web Service EC2 instance.
